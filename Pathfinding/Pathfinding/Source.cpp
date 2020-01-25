@@ -7,11 +7,16 @@
 #include "GraphNode.h"
 #include "NodeData.h"
 
+typedef GraphArc<NodeData, int> Arc;
+typedef GraphNode<NodeData, int> Node;
 
+void visit(Node* t_node)
+{
+	std::cout << "Visiting: " << t_node->m_data.m_name << std::endl;
+}
 
 int main()
-{
-	/*
+{	
 	// Construct a sample 5x5 grid - cells are numbered from 0 to 24.
 	int const ROWS = 5;
 	int const COLS = 5;
@@ -25,12 +30,12 @@ int main()
 	};
 
 	// Let's see if we can find the neighbours of row 4 and column 4:
-	int row = 4;
-	int col = 4;
+	int row = 1;
+	int col = 1;
 
 	// List all neighbors:
 	for (int direction = 0; direction < 9; direction++) {
-		if (direction == 4) continue; // Skip 4, this is ourself.
+		if (direction == 1) continue; // Skip 4, this is ourself.
 
 		int n_row = row + ((direction % 3) - 1); // Neighbor row
 		int n_col = col + ((direction / 3) - 1); // Neighbor column
@@ -42,11 +47,11 @@ int main()
 			std::cout << "Neighbor: " << n_row << "," << n_col << ": " << arr[n_row][n_col] << std::endl;
 		}
 	}
-	*/
+	
 
 	// Create a graph with capacity for 25 nodes.
 	// Templates parameters are NodeType (std::string), ArcType (int)
-	Graph<NodeData, int> graph(25);
+	Graph<NodeData, int> graph(30);
 
 	NodeData nodeData;
 	int nodeIndex = 0;
@@ -56,7 +61,9 @@ int main()
 	myfile.open("nodes.txt");
 	while (myfile >> nodeData.m_name >> nodeData.xPos >> nodeData.yPos)
 	{
+		std::cout << nodeData.m_name;
 		graph.addNode(nodeData, nodeIndex++);
+
 	}
 	myfile.close();
 
@@ -69,6 +76,5 @@ int main()
 	}
 	myfile.close();
 
-
-
+	graph.breadthFirst(graph.nodeIndex(0), visit);
 }
