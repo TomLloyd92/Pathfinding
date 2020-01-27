@@ -107,16 +107,15 @@ int main()
 	myfile.close();
 
 	//graph.breadthFirst(graph.nodeIndex(0), visit);
-	std::cout << graph.nodeIndex(0)->arcList().size();
+	//std::cout << graph.nodeIndex(0)->arcList().size();
 
 	//graph.breadthFirst(graph.nodeIndex(0), visit);
 
-	graph.nodeIndex(0)->getArc(0);
+	//graph.nodeIndex(0)->getArc(0);
 
-	graph.nodeIndex(0)->arcList();
+	//graph.nodeIndex(0)->arcList();
 
-
-	//graph.aStar* (graph.nodeIndex(0), graph.nodeIndex(3), visit,  ) ;
+	graph.nodeIndex(0)->m_data.xPos;
 
 
 	std::vector<Node*> path;

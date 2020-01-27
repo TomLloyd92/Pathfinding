@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 #include <functional>
+#include <math.h>
 
 
 template <class NodeType, class ArcType> class GraphArc;
@@ -361,7 +362,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	while (PQ.size() != 0 && PQ.front() != dest)
 	{
 		//Debug visit function to know what we have visited
-		f_visit(PQ.front());
+		//f_visit(PQ.front());
 
 		
 		//Get start and end of arc list
@@ -374,34 +375,33 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 			//If child of que top isnt the previous node of que
 			if ((*iter).node() != PQ.back())
 			{
+
+				//Get the distance from que node to child node
+				float gN = sqrt(((*iter).node()->m_data.xPos - PQ.front()->m_data.xPos ) * ((*iter).node()->m_data.xPos - PQ.front()->m_data.xPos)
+											+ ((*iter).node()->m_data.yPos - PQ.front()->m_data.yPos ) * ((*iter).node()->m_data.yPos) - PQ.front()->m_data.xPos);
+
+				//Estimated cost to goal from child Node
+				float hN = sqrt((dest->m_data.xPos - (*iter).node()->m_data.xPos) * (dest->m_data.xPos - (*iter).node()->m_data.xPos)
+												+ (dest->m_data.yPos - (*iter).node()->m_data.yPos) * (dest->m_data.yPos - (*iter).node()->m_data.yPos));
 				
-				//float distanceToNode =(*iter).xPos();
+				float distance = gN + hN;
 
-				//std::cout << distanceToNode << std::endl;
+				//Estimated total cost of the path through n to goal
+				float fN = hN;
+
+
+				if (distance < fN)
+				{
+					fN = distance;
+
+				}
+
+
+				std::cout << gN << std::endl;
+				system("Pause");
 			}
-
-
-
-			/*
-			if ((*iter).node()->marked() == false)
-			{
-				// mark the node and add it to the queue.
-				(*iter).node()->setMarked(true);
-				nodeQueue.push((*iter).node());
-			}
-			*/
 		}
-		
-
-		
 	}
-
-
-
-	
-
-
-
 }
 
 
