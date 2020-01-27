@@ -111,7 +111,9 @@ int main()
 
 	//graph.breadthFirst(graph.nodeIndex(0), visit);
 
-	//std::vector<Node*> path = graph.nodeIndex(0)->getArc(0);
+	graph.nodeIndex(0)->getArc(0);
+
+	graph.nodeIndex(0)->arcList();
 
 
 	//graph.aStar* (graph.nodeIndex(0), graph.nodeIndex(3), visit,  ) ;

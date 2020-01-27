@@ -348,7 +348,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	//f(n) estimated cost of path through n to goal
 
 	//Start cost so far to zero
-	float g = 0;
+	float gN = 0;
 
 	//Priority Que
 	std::queue<Node*> PQ;
@@ -360,7 +360,38 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	//While there is nodes to be seached that arent the Goal Node
 	while (PQ.size() != 0 && PQ.front() != dest)
 	{
-		std::cout << "Test" << std::endl;
+		//Debug visit function to know what we have visited
+		f_visit(PQ.front());
+
+		
+		//Get start and end of arc list
+		auto iter = PQ.front()->arcList().begin();
+		auto endIter = PQ.front()->arcList().end();
+
+		//For each arc node of que top		
+		for (; iter != endIter; iter++)
+		{
+			//If child of que top isnt the previous node of que
+			if ((*iter).node() != PQ.back())
+			{
+				
+				//float distanceToNode =(*iter).xPos();
+
+				//std::cout << distanceToNode << std::endl;
+			}
+
+
+
+			/*
+			if ((*iter).node()->marked() == false)
+			{
+				// mark the node and add it to the queue.
+				(*iter).node()->setMarked(true);
+				nodeQueue.push((*iter).node());
+			}
+			*/
+		}
+		
 
 		
 	}
