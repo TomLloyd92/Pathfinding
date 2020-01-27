@@ -44,13 +44,16 @@ int main()
 		if (n_row >= 0 && n_row < ROWS && n_col >= 0 && n_col < COLS) {
 
 			// A valid neighbor:
-			std::cout << "Neighbor: " << n_row << "," << n_col << ": " << arr[n_row][n_col] << std::endl;
+			//std::cout << "Neighbor: " << n_row << "," << n_col << ": " << arr[n_row][n_col] << std::endl;
 		}
 	}
 	
 
 	// Create a graph with capacity for 25 nodes.
 	// Templates parameters are NodeType (std::string), ArcType (int)
+
+	static const int GRAPH_SIZE = 30;
+
 	Graph<NodeData, int> graph(30);
 
 	NodeData nodeData;
@@ -61,7 +64,8 @@ int main()
 	myfile.open("nodes.txt");
 	while (myfile >> nodeData.m_name >> nodeData.xPos >> nodeData.yPos)
 	{
-		std::cout << nodeData.m_name;
+
+		//std::cout << nodeData.m_name;
 		graph.addNode(nodeData, nodeIndex++);
 
 	}
@@ -69,12 +73,53 @@ int main()
 
 	// Wire up the graph by creating arcs between nodes.
 	myfile.open("arcs.txt");
-	int from, to, weight;
+	std::string from, to;
+	int weight;
+	int nodeFrom = -1;
+	int nodeTo = -1 ;
+
+	
 	while (myfile >> from >> to >> weight)
 	{
-		graph.addArc(from, to, weight);
+		//std::cout << from << " " << to << " " << weight << std::endl;
+		for (int i = 0; i < GRAPH_SIZE ; i++)
+		{
+			if (graph.nodeIndex(i)->m_data.m_name == from)
+			{
+				nodeFrom = i;
+				break;
+			}
+		}
+
+		for (int i = 0; i < GRAPH_SIZE ; i++)
+		{
+			if (graph.nodeIndex(i)->m_data.m_name == to)
+			{
+				nodeTo = i;
+				break;
+			}
+		}
+		
+
+		graph.addArc(nodeFrom, nodeTo, weight);
 	}
+	
 	myfile.close();
 
-	graph.breadthFirst(graph.nodeIndex(0), visit);
+	//graph.breadthFirst(graph.nodeIndex(0), visit);
+	std::cout << graph.nodeIndex(0)->arcList().size();
+
+	//graph.breadthFirst(graph.nodeIndex(0), visit);
+
+	//std::vector<Node*> path = graph.nodeIndex(0)->getArc(0);
+
+
+	//graph.aStar* (graph.nodeIndex(0), graph.nodeIndex(3), visit,  ) ;
+
+
+	std::vector<Node*> path;
+
+	graph.aStar(graph.nodeIndex(0), graph.nodeIndex(3), visit, path );
+
+	system("pause");
 }

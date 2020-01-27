@@ -343,6 +343,33 @@ void Graph<NodeType, ArcType>::adaptedBreadthFirst( Node* current, Node *goal )
 template<class NodeType, class ArcType>
 inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::function<void(Node*)> f_visit, std::vector<Node*>& path)
 {
+	//h(n) estimated cost to foal from n
+	//g(n) cost so far to reach n
+	//f(n) estimated cost of path through n to goal
+
+	//Start cost so far to zero
+	float g = 0;
+
+	//Priority Que
+	std::queue<Node*> PQ;
+
+	//Start the que at start node and mark
+	PQ.push(start);
+	start->setMarked(true);
+
+	//While there is nodes to be seached that arent the Goal Node
+	while (PQ.size() != 0 && PQ.front() != dest)
+	{
+		std::cout << "Test" << std::endl;
+
+		
+	}
+
+
+
+	
+
+
 
 }
 
