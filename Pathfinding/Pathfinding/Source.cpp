@@ -120,7 +120,7 @@ int main()
 
 	std::vector<Node*> path;
 
-	graph.aStar(graph.nodeIndex(0), graph.nodeIndex(3), visit, path );
+	graph.aStar(graph.nodeIndex(0), graph.nodeIndex(29), visit, path );
 
 	system("pause");
 }

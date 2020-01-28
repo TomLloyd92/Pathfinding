@@ -6,10 +6,13 @@
 #include <vector>
 #include <functional>
 #include <math.h>
-
+#include "NodeCompear.h"
 
 template <class NodeType, class ArcType> class GraphArc;
 template <class NodeType, class ArcType> class GraphNode;
+
+template <class NodeType, class ArcType> class NodeComparator;
+
 
 // ---------------------------------------------------------------------
 //  Name:           Graph
@@ -57,6 +60,19 @@ private:
 	std::vector<Node*> m_nodes;
 
 };
+
+/*
+template<class NodeType, class ArcType>
+class NodeComparator
+{
+public:
+	bool operator()(Node* n1, Node* n2)
+	{
+		return n1->m_data.m_h > n2->m_data.m_h;
+	}
+};
+*/
+
 
 // ----------------------------------------------------------------
 //  Name:           Graph
@@ -290,40 +306,40 @@ void Graph<NodeType, ArcType>::depthFirst( Node* node, std::function<void(Node *
 //  Return Value:   None.
 // ----------------------------------------------------------------
 template<class NodeType, class ArcType>
-void Graph<NodeType, ArcType>::breadthFirst( Node* node, std::function<void(Node *)> f_visit) 
+void Graph<NodeType, ArcType>::breadthFirst(Node* node, std::function<void(Node*)> f_visit)
 {
-   if( nullptr != node ) 
-   {
-	  std::queue<Node*> nodeQueue;        
-	  // place the first node on the queue, and mark it.
-      nodeQueue.push( node );
-      node->setMarked(true);
+	if (nullptr != node)
+	{
+		std::queue<Node*> nodeQueue;
+		// place the first node on the queue, and mark it.
+		nodeQueue.push(node);
+		node->setMarked(true);
 
-      // loop through the queue while there are nodes in it.
-      while( nodeQueue.size() != 0 ) 
-	  {
-         // process the node at the front of the queue.
-		 f_visit( nodeQueue.front() );
+		// loop through the queue while there are nodes in it.
+		while (nodeQueue.size() != 0)
+		{
+			// process the node at the front of the queue.
+			f_visit(nodeQueue.front());
 
-         // add all of the child nodes that have not been 
-         // marked into the queue
-         auto iter = nodeQueue.front()->arcList().begin();
-         auto endIter = nodeQueue.front()->arcList().end();
-         
-		 for( ; iter != endIter; iter++ ) 
-		 {
-              if ( (*iter).node()->marked() == false) 
-			  {
-				 // mark the node and add it to the queue.
-                 (*iter).node()->setMarked(true);
-                 nodeQueue.push( (*iter).node() );
-              }
-         }
+			// add all of the child nodes that have not been 
+			// marked into the queue
+			auto iter = nodeQueue.front()->arcList().begin();
+			auto endIter = nodeQueue.front()->arcList().end();
 
-         // dequeue the current node.
-         nodeQueue.pop();
-      }
-   }  
+			for (; iter != endIter; iter++)
+			{
+				if ((*iter).node()->marked() == false)
+				{
+					// mark the node and add it to the queue.
+					(*iter).node()->setMarked(true);
+					nodeQueue.push((*iter).node());
+				}
+			}
+
+			// dequeue the current node.
+			nodeQueue.pop();
+		}
+	}
 }
 
 
@@ -336,39 +352,74 @@ void Graph<NodeType, ArcType>::breadthFirst( Node* node, std::function<void(Node
 //  Return Value:   None.
 // ----------------------------------------------------------------
 template<class NodeType, class ArcType>
-void Graph<NodeType, ArcType>::adaptedBreadthFirst( Node* current, Node *goal ) 
+void Graph<NodeType, ArcType>::adaptedBreadthFirst(Node* current, Node* goal)
 {
-     
+
 }
 
 template<class NodeType, class ArcType>
 inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::function<void(Node*)> f_visit, std::vector<Node*>& path)
 {
-	//h(n) estimated cost to foal from n
+	//h(n) estimated cost to goal from n
 	//g(n) cost so far to reach n
 	//f(n) estimated cost of path through n to goal
 
-	
 	for (auto node : m_nodes)
 	{
 		//Calculating the distance from node to destination
 		node->m_data.m_h = sqrt((dest->m_data.xPos - node->m_data.xPos) * (dest->m_data.xPos - node->m_data.xPos)
-							+ (dest->m_data.yPos - node->m_data.yPos) * (dest->m_data.yPos - node->m_data.yPos));
+			+ (dest->m_data.yPos - node->m_data.yPos) * (dest->m_data.yPos - node->m_data.yPos));
 
 		//Setting the cost so far to infinity
 		node->m_data.m_g = std::numeric_limits<int>::max();
-		
 	}
-	
+
 	//Start cost so far to zero
 	float gN = 0;
 
-	//Priority Que
-	//std::priority_queue<Node*, std::vector<Node*>, NodeComparator<NodeType, ArcType>> pq;
-	std::queue<Node*> PQ;
+	//Priority Queue
+	std::priority_queue<Node*, std::vector<Node*>, NodeComparator<NodeType, ArcType>> pq;
+	pq.push(start);
+	//pq.push(dest);
 
+	start->setMarked(true);
+
+	while (pq.size() != 0 && pq.top() != dest)
+	{
+		//Debug visit function to know what we have visited
+		f_visit(pq.top());
+
+		//Get start and end of arc list
+		auto iter = pq.top()->arcList().begin();
+		auto endIter = pq.top()->arcList().end();
+
+		//For each arc node of que top		
+		for (; iter != endIter; iter++)
+		{
+			if ((*iter).node() != pq.top()->previous())
+			{
+		
+				float distance = (*iter).node()->m_data.m_g;
+
+				if (distance < (*iter).node()->m_data.m_g)
+				{
+					std::cout << "INSIDE" << std::endl;
+					(*iter).node()->setPrevious(pq.top());
+				}
+			}
+			if ((*iter).node()->marked() == false)
+			{
+				pq.push((*iter).node());
+				(*iter).node()->setMarked(true);
+			}
+		}
+	}
+
+
+	/*
+	std::queue<Node*> PQ;
 	//Start the que at start node and mark
-	PQ.push(start);
+	pq.push(start);
 	start->setMarked(true);
 
 	//While there is nodes to be seached that arent the Goal Node
@@ -386,6 +437,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 		for (; iter != endIter; iter++)
 		{
 			//If child of que top isnt the previous node of que
+			if ((*iter).node() != pq.top()->previous())
 			if ((*iter).node() != PQ.back())
 			{
 
@@ -413,17 +465,23 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 
 
 				std::cout << gN << std::endl;
-				*/
+				
 				system("Pause");
 			}
 		}
+		
 	}
+	*/
+
+	pq.pop();
 }
 
 
 
 #include "GraphNode.h"
 #include "GraphArc.h"
+
+#include "NodeCompear.h"
 
 
 #endif

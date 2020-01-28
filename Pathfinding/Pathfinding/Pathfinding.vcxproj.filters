@@ -32,7 +32,7 @@
     <ClInclude Include="NodeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NodeComparator.h">
+    <ClInclude Include="NodeCompear.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
