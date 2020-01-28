@@ -3,7 +3,7 @@ C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(80,30): wa
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(79): message :  while compiling class template member function 'Graph<NodeData,int>::~Graph(void)'
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message :  see reference to function template instantiation 'Graph<NodeData,int>::~Graph(void)' being compiled
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message :  see reference to class template instantiation 'Graph<NodeData,int>' being compiled
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(389,14): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(355,26): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :  while compiling class template member function 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)'
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         with
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         [

@@ -32,5 +32,8 @@
     <ClInclude Include="NodeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NodeComparator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

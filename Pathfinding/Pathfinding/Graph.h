@@ -348,14 +348,18 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	//g(n) cost so far to reach n
 	//f(n) estimated cost of path through n to goal
 
-	/*
+	
 	for (auto node : m_nodes)
 	{
-		node->m_data.m_h = 
-		node->m_data.m_g = std::numeric_limits<int>::max();
-	}
-	*/
+		//Calculating the distance from node to destination
+		node->m_data.m_h = sqrt((dest->m_data.xPos - node->m_data.xPos) * (dest->m_data.xPos - node->m_data.xPos)
+							+ (dest->m_data.yPos - node->m_data.yPos) * (dest->m_data.yPos - node->m_data.yPos));
 
+		//Setting the cost so far to infinity
+		node->m_data.m_g = std::numeric_limits<int>::max();
+		
+	}
+	
 	//Start cost so far to zero
 	float gN = 0;
 
@@ -390,9 +394,10 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 											+ ((*iter).node()->m_data.yPos - PQ.front()->m_data.yPos ) * ((*iter).node()->m_data.yPos) - PQ.front()->m_data.xPos);
 
 				//Estimated cost to goal from child Node
-				float hN = sqrt((dest->m_data.xPos - (*iter).node()->m_data.xPos) * (dest->m_data.xPos - (*iter).node()->m_data.xPos)
-				+(dest->m_data.yPos - (*iter).node()->m_data.yPos) * (dest->m_data.yPos - (*iter).node()->m_data.yPos));
+				//float hN = 
 				
+
+				/*
 				float distance = gN + hN;
 
 				//Estimated total cost of the path through n to goal
@@ -408,6 +413,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 
 
 				std::cout << gN << std::endl;
+				*/
 				system("Pause");
 			}
 		}
