@@ -11,4 +11,7 @@ struct NodeData
 	std::string m_name;
 	int xPos;
 	int yPos;
+
+	int m_h{ 0 };
+	int m_g{ 0 };
 };

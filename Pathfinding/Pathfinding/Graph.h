@@ -348,10 +348,19 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	//g(n) cost so far to reach n
 	//f(n) estimated cost of path through n to goal
 
+	/*
+	for (auto node : m_nodes)
+	{
+		node->m_data.m_h = 
+		node->m_data.m_g = std::numeric_limits<int>::max();
+	}
+	*/
+
 	//Start cost so far to zero
 	float gN = 0;
 
 	//Priority Que
+	//std::priority_queue<Node*, std::vector<Node*>, NodeComparator<NodeType, ArcType>> pq;
 	std::queue<Node*> PQ;
 
 	//Start the que at start node and mark
@@ -382,7 +391,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 
 				//Estimated cost to goal from child Node
 				float hN = sqrt((dest->m_data.xPos - (*iter).node()->m_data.xPos) * (dest->m_data.xPos - (*iter).node()->m_data.xPos)
-												+ (dest->m_data.yPos - (*iter).node()->m_data.yPos) * (dest->m_data.yPos - (*iter).node()->m_data.yPos));
+				+(dest->m_data.yPos - (*iter).node()->m_data.yPos) * (dest->m_data.yPos - (*iter).node()->m_data.yPos));
 				
 				float distance = gN + hN;
 
@@ -393,6 +402,7 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 				if (distance < fN)
 				{
 					fN = distance;
+
 
 				}
 

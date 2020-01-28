@@ -1,18 +1,18 @@
 ﻿  Source.cpp
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(80,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(79): message : while compiling class template member function 'Graph<NodeData,int>::~Graph(void)'
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message : see reference to function template instantiation 'Graph<NodeData,int>::~Graph(void)' being compiled
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message : see reference to class template instantiation 'Graph<NodeData,int>' being compiled
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(380,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message : while compiling class template member function 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)'
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         with
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         [
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :             _Ty=GraphNode<NodeData,int> *
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         ]
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message : see reference to function template instantiation 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)' being compiled
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         with
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         [
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :             _Ty=GraphNode<NodeData,int> *
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         ]
-C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(384,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Pathfinding.vcxproj -> C:\Users\tomll\OneDrive\Desktop\Pathfinding\Pathfinding\Debug\Pathfinding.exe
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(80,30): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(79): message :  while compiling class template member function 'Graph<NodeData,int>::~Graph(void)'
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message :  see reference to function template instantiation 'Graph<NodeData,int>::~Graph(void)' being compiled
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(57): message :  see reference to class template instantiation 'Graph<NodeData,int>' being compiled
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(389,14): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :  while compiling class template member function 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)'
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         with
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         [
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :             _Ty=GraphNode<NodeData,int> *
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(346): message :         ]
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :  see reference to function template instantiation 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)' being compiled
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         with
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         [
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :             _Ty=GraphNode<NodeData,int> *
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         ]
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(393,14): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+  Pathfinding.vcxproj -> C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Debug\Pathfinding.exe
