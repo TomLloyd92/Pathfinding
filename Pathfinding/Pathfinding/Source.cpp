@@ -106,20 +106,7 @@ int main()
 	
 	myfile.close();
 
-	//graph.breadthFirst(graph.nodeIndex(0), visit);
-	//std::cout << graph.nodeIndex(0)->arcList().size();
-
-	//graph.breadthFirst(graph.nodeIndex(0), visit);
-
-	//graph.nodeIndex(0)->getArc(0);
-
-	//graph.nodeIndex(0)->arcList();
-
-	graph.nodeIndex(0)->m_data.xPos;
-
-
 	std::vector<Node*> path;
-
 	graph.aStar(graph.nodeIndex(0), graph.nodeIndex(29), visit, path );
 
 	system("pause");

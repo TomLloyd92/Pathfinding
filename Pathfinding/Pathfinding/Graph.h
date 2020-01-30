@@ -380,7 +380,8 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	//Priority Queue
 	std::priority_queue<Node*, std::vector<Node*>, NodeComparator<NodeType, ArcType>> pq;
 	pq.push(start);
-	//pq.push(dest);
+
+	start->m_data.m_g = 0;
 
 	start->setMarked(true);
 
@@ -393,87 +394,31 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 		auto iter = pq.top()->arcList().begin();
 		auto endIter = pq.top()->arcList().end();
 
+		// Arc arc = (*iter);
 		//For each arc node of que top		
 		for (; iter != endIter; iter++)
 		{
 			if ((*iter).node() != pq.top()->previous())
 			{
+				//f_visit((*iter).node());
 		
-				float distance = (*iter).node()->m_data.m_g;
-
+				float distance = pq.top()->m_data.m_g + (*iter).weight(); 
 				if (distance < (*iter).node()->m_data.m_g)
 				{
-					std::cout << "INSIDE" << std::endl;
+					std::cout << "INSIDE LOOP" << std::endl;
+					(*iter).node()->m_data.m_g = distance;
 					(*iter).node()->setPrevious(pq.top());
 				}
-			}
-			if ((*iter).node()->marked() == false)
-			{
-				pq.push((*iter).node());
-				(*iter).node()->setMarked(true);
-			}
-		}
-	}
 
-
-	/*
-	std::queue<Node*> PQ;
-	//Start the que at start node and mark
-	pq.push(start);
-	start->setMarked(true);
-
-	//While there is nodes to be seached that arent the Goal Node
-	while (PQ.size() != 0 && PQ.front() != dest)
-	{
-		//Debug visit function to know what we have visited
-		//f_visit(PQ.front());
-
-		
-		//Get start and end of arc list
-		auto iter = PQ.front()->arcList().begin();
-		auto endIter = PQ.front()->arcList().end();
-
-		//For each arc node of que top		
-		for (; iter != endIter; iter++)
-		{
-			//If child of que top isnt the previous node of que
-			if ((*iter).node() != pq.top()->previous())
-			if ((*iter).node() != PQ.back())
-			{
-
-				//Get the distance from que node to child node
-				float gN = sqrt(((*iter).node()->m_data.xPos - PQ.front()->m_data.xPos ) * ((*iter).node()->m_data.xPos - PQ.front()->m_data.xPos)
-											+ ((*iter).node()->m_data.yPos - PQ.front()->m_data.yPos ) * ((*iter).node()->m_data.yPos) - PQ.front()->m_data.xPos);
-
-				//Estimated cost to goal from child Node
-				//float hN = 
-				
-
-				/*
-				float distance = gN + hN;
-
-				//Estimated total cost of the path through n to goal
-				float fN = hN;
-
-
-				if (distance < fN)
+				if ((*iter).node()->marked() == false)
 				{
-					fN = distance;
-
-
+					pq.push((*iter).node());
+					(*iter).node()->setMarked(true);
 				}
-
-
-				std::cout << gN << std::endl;
-				
-				system("Pause");
-			}
+			}		
 		}
-		
+		pq.pop();
 	}
-	*/
-
-	pq.pop();
 }
 
 

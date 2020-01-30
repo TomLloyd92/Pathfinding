@@ -9,10 +9,15 @@ C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(362): mess
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(362): message :         [
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(362): message :             _Ty=GraphNode<NodeData,int> *
 C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(362): message :         ]
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :  see reference to function template instantiation 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)' being compiled
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         with
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         [
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :             _Ty=GraphNode<NodeData,int> *
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(123): message :         ]
-C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(402,20): warning C4244:  'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(110): message :  see reference to function template instantiation 'void Graph<NodeData,int>::aStar(GraphNode<NodeData,int> *,GraphNode<NodeData,int> *,std::function<void (GraphNode<NodeData,int> *)>,std::vector<GraphNode<NodeData,int> *,std::allocator<_Ty>> &)' being compiled
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(110): message :         with
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(110): message :         [
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(110): message :             _Ty=GraphNode<NodeData,int> *
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Source.cpp(110): message :         ]
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(405,20): warning C4244:  'initializing': conversion from 'ArcType' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(405,20): warning C4244:         with
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(405,20): warning C4244:         [
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(405,20): warning C4244:             ArcType=int
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(405,20): warning C4244:         ]
+C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Pathfinding\Graph.h(409,35): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
   Pathfinding.vcxproj -> C:\Users\gameuser\Desktop\Pathfinding\Pathfinding\Debug\Pathfinding.exe
