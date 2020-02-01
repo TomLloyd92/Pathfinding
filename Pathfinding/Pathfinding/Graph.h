@@ -381,14 +381,13 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 	std::priority_queue<Node*, std::vector<Node*>, NodeComparator<NodeType, ArcType>> pq;
 	pq.push(start);
 
+	//Mark start and set Cost so far to 0
 	start->m_data.m_g = 0;
-
 	start->setMarked(true);
 
 	while (pq.size() != 0 && pq.top() != dest)
 	{
-		//Debug visit function to know what we have visited
-		f_visit(pq.top());
+		//f_visit(pq.top());
 
 		//Get start and end of arc list
 		auto iter = pq.top()->arcList().begin();
@@ -400,12 +399,11 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 		{
 			if ((*iter).node() != pq.top()->previous())
 			{
-				//f_visit((*iter).node());
+			
 		
 				float distance = pq.top()->m_data.m_g + (*iter).weight(); 
 				if (distance < (*iter).node()->m_data.m_g)
 				{
-					std::cout << "INSIDE LOOP" << std::endl;
 					(*iter).node()->m_data.m_g = distance;
 					(*iter).node()->setPrevious(pq.top());
 				}
@@ -418,6 +416,18 @@ inline void Graph<NodeType, ArcType>::aStar(Node* start, Node* dest, std::functi
 			}		
 		}
 		pq.pop();
+	}
+
+	//Insert the destination for start of best path
+	path.push_back(dest);
+
+	//Outputing the path by working back through previous pointers
+	while (dest->previous() != nullptr)
+	{
+		//add previous node to the path vector
+		path.push_back(dest->previous());
+		//Step back to previous node
+		dest->setPrevious(dest->previous()->previous());
 	}
 }
 

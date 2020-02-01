@@ -106,8 +106,18 @@ int main()
 	
 	myfile.close();
 
+	//Creating new Node vector to hold the path
 	std::vector<Node*> path;
+
+	//Calling aStar function with starting node, destination node, visit function for output testing, node vector to record the path
 	graph.aStar(graph.nodeIndex(0), graph.nodeIndex(29), visit, path );
+
+	//Output the elements of path vector that holds the path to the destination node
+	for (auto & node : path) {
+	
+		std::cout << node->m_data.m_name << std::endl;
+	}
+
 
 	system("pause");
 }
